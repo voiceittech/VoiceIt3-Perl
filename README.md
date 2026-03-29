@@ -3,9 +3,21 @@
 
 A Perl wrapper for VoiceIt's API 3.0 featuring Voice + Face Verification and Identification.
 
+## Installation
+
+```bash
+git clone https://github.com/voiceittech/VoiceIt3-Perl.git
+```
+
+Then use in your script:
+```perl
+use lib "VoiceIt3-Perl";
+use VoiceIt3;
+```
+
 ## Getting Started
 
-Sign up for a free Developer Account at [VoiceIt.io](https://voiceit.io/signup). Visit the settings tab to view your API Key and Token. 
+Sign up for a free Developer Account at [VoiceIt.io](https://voiceit.io/pricing). Visit the settings tab to view your API Key and Token. 
 
 ## API calls
 You can visit our [HTTP API 3.0 Documentation](https://api.voiceit.io/?perl#introduction) for detailed information on each API call.
