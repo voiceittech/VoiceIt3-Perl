@@ -172,7 +172,7 @@ sub createGroup(){
     shift;
     my ($grpId, $usrId)= @_;
     my $ua = LWP::UserAgent->new();
-    my $request = PUT $baseUrl.'/groups/removeUser'.$self->{notificationUrl},
+    my $request = DELETE $baseUrl.'/groups/removeUser'.$self->{notificationUrl},
       Content => [
           groupId => $grpId,
           userId => $usrId,
