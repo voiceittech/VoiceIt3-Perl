@@ -1,7 +1,7 @@
 <img src="./perl.png" width="100%" style="width:100%" />
 
 [![API Test](https://github.com/voiceittech/VoiceIt3-Perl/actions/workflows/test.yml/badge.svg)](https://github.com/voiceittech/VoiceIt3-Perl/actions/workflows/test.yml)
-[![Dependabot](https://img.shields.io/badge/dependabot-enabled-025e8c?logo=dependabot)](https://github.com/voiceittech/VoiceIt3-Perl/security/dependabot)
+[![Dependabot](https://img.shields.io/badge/dependabot-100%25-025e8c?logo=dependabot)](https://github.com/voiceittech/VoiceIt3-Perl/security/dependabot)
 [![Version](https://img.shields.io/badge/version-3.24-blue)](https://github.com/voiceittech/VoiceIt3-Perl)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/voiceittech/VoiceIt3-Perl/blob/main/LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Perl-lightgrey)](https://github.com/voiceittech/VoiceIt3-Perl)
