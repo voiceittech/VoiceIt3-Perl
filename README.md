@@ -1,4 +1,4 @@
-<img src="./perl.png" width="100%" style="width:100%" />
+<img src="https://raw.githubusercontent.com/voiceittech/voiceit3-perl/main/perl.png" width="100%" style="width:100%" />
 
 [![API Test](https://github.com/voiceittech/voiceit3-perl/actions/workflows/test.yml/badge.svg)](https://github.com/voiceittech/voiceit3-perl/actions/workflows/test.yml)
 [![Dependabot](https://img.shields.io/github/issues-pr/voiceittech/voiceit3-perl/dependencies?label=dependabot&logo=dependabot&color=025e8c)](https://github.com/voiceittech/voiceit3-perl/pulls?q=is%3Apr+label%3Adependencies)
@@ -26,7 +26,7 @@ use voiceit3;
 
 Sign up at [voiceit.io/pricing](https://voiceit.io/pricing) to get your API Key and Token, then log in to the [Dashboard](https://dashboard.voiceit.io) to manage your account.
 
-<img src="./Graphics/getcredentials.png" alt="API Key and Token" width="400px" />
+<img src="https://raw.githubusercontent.com/voiceittech/voiceit3-perl/main/Graphics/getcredentials.png" alt="API Key and Token" width="400px" />
 
 ## API Calls
 
