@@ -1,4 +1,4 @@
-package voiceIt3;
+package voiceit3;
 
 use strict;
 require LWP::UserAgent;

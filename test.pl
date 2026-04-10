@@ -1,10 +1,10 @@
-require './voiceIt3.pm';
+require './voiceit3.pm';
 use JSON::Parse 'parse_json';
 use LWP::Simple;
 print "**** Started Testing ****\n";
 my $self;
 
-my $myVoiceIt = voiceIt3->new($ENV{'VIAPIKEY'}, $ENV{'VIAPITOKEN'});
+my $myVoiceIt = voiceit3->new($ENV{'VIAPIKEY'}, $ENV{'VIAPITOKEN'});
 
 # Test Webhook
 $myVoiceIt->addNotificationUrl('https://voiceit.io');
