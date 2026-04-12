@@ -7,7 +7,7 @@ require "./voiceit3.pm";
 my $ak = $ENV{'VOICEIT_API_KEY'} || die "Set VOICEIT_API_KEY\n";
 my $at = $ENV{'VOICEIT_API_TOKEN'} || die "Set VOICEIT_API_TOKEN\n";
 my $vi = voiceit3->new($ak, $at);
-my $phrase = "never forget tomorrow is a new day";
+my $phrase = "Never forget tomorrow is a new day";
 my $td = "test-data";
 
 my $r = parse_json($vi->createUser());
