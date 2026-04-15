@@ -46,7 +46,7 @@ my $platformVersion = '3.25';
 
   sub getAllUsers() {
     shift;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = GET $baseUrl.'/users'.$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -57,7 +57,7 @@ my $platformVersion = '3.25';
 
   sub createUser() {
     shift;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/users'.$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -69,7 +69,7 @@ my $platformVersion = '3.25';
   sub checkUserExists(){
     shift;
     my ($usrId) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = GET $baseUrl.'/users/'.uri_escape($usrId).$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -81,7 +81,7 @@ my $platformVersion = '3.25';
   sub deleteUser(){
     shift;
     my ($usrId) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = DELETE $baseUrl.'/users/'.uri_escape($usrId).$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -93,7 +93,7 @@ my $platformVersion = '3.25';
   sub getGroupsForUser(){
     shift;
     my ($usrId) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = GET $baseUrl.'/users/'.uri_escape($usrId).'/groups'.$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -104,7 +104,7 @@ my $platformVersion = '3.25';
 
   sub getAllGroups(){
     shift;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = GET $baseUrl.'/groups'.$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -117,7 +117,7 @@ my $platformVersion = '3.25';
   sub getGroup(){
     shift;
     my ($groupId) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = GET $baseUrl.'/groups/'.uri_escape($groupId).$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -155,7 +155,7 @@ sub createGroup(){
   sub addUserToGroup(){
     shift;
     my ($grpId, $usrId)= @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = PUT $baseUrl.'/groups/addUser'.$self->{notificationUrl},
       Content => [
           groupId => $grpId,
@@ -171,7 +171,7 @@ sub createGroup(){
   sub removeUserFromGroup(){
     shift;
     my ($grpId, $usrId)= @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = DELETE $baseUrl.'/groups/removeUser'.$self->{notificationUrl},
       Content => [
           groupId => $grpId,
@@ -187,7 +187,7 @@ sub createGroup(){
   sub deleteGroup(){
     shift;
     my ($grpId)= @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = DELETE $baseUrl.'/groups/'.uri_escape($grpId).$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -199,7 +199,7 @@ sub createGroup(){
   sub getPhrases(){
     shift;
     my ($contentLanguage)= @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = GET $baseUrl.'/phrases/'.uri_escape($contentLanguage).$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -211,7 +211,7 @@ sub createGroup(){
   sub getAllFaceEnrollments(){
     shift;
     my ($usrId)= @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = GET $baseUrl.'/enrollments/face/'.uri_escape($usrId).$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -223,7 +223,7 @@ sub createGroup(){
   sub getAllVoiceEnrollments(){
     shift;
     my ($usrId)= @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = GET $baseUrl.'/enrollments/voice/'.uri_escape($usrId).$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -235,7 +235,7 @@ sub createGroup(){
   sub getAllVideoEnrollments(){
     shift;
     my ($usrId)= @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = GET $baseUrl.'/enrollments/video/'.uri_escape($usrId).$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -250,7 +250,7 @@ sub createGroup(){
     if (!(-e $filePath)) {
       die "FileNotFound: No such file or directory \"".$filePath."\" \@createVoiceEnrollment";
     }
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/enrollments/voice'.$self->{notificationUrl}, Content_Type => 'form-data',  Content => [
           recording => [$filePath],
           userId => $usrId,
@@ -267,7 +267,7 @@ sub createGroup(){
   sub createVoiceEnrollmentByUrl(){
     shift;
     my ($usrId, $lang,  $phrase, $fileUrl) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/enrollments/voice/byUrl'.$self->{notificationUrl}, Content_Type => 'form-data',  Content => [
           fileUrl => $fileUrl,
           userId => $usrId,
@@ -284,7 +284,7 @@ sub createGroup(){
   sub createFaceEnrollment(){
     shift;
     my ($usrId, $filePath) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     if (!(-e $filePath)) {
       die "FileNotFound: No such file or directory \"".$filePath."\" \@createFaceEnrollment";
     }
@@ -302,7 +302,7 @@ sub createGroup(){
   sub createFaceEnrollmentByUrl(){
     shift;
     my ($usrId, $fileUrl) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/enrollments/face/byUrl'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           fileUrl => $fileUrl,
           userId => $usrId
@@ -317,7 +317,7 @@ sub createGroup(){
   sub createVideoEnrollment(){
     shift;
     my ($usrId, $lang,  $phrase,$filePath) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     if (!(-e $filePath)) {
       die "FileNotFound: No such file or directory \"".$filePath."\" \@createVideoEnrollment";
     }
@@ -337,7 +337,7 @@ sub createGroup(){
   sub createVideoEnrollmentByUrl(){
     shift;
     my ($usrId, $lang,  $phrase,$fileUrl) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/enrollments/video/byUrl'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           fileUrl => $fileUrl,
           userId => $usrId,
@@ -354,7 +354,7 @@ sub createGroup(){
   sub deleteAllEnrollments() {
     shift;
     my ($usrId) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = DELETE $baseUrl.'/enrollments/'.uri_escape($usrId).'/all'.$self->{notificationUrl}, Content_Type => 'form-data';
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -369,7 +369,7 @@ sub createGroup(){
     if (!(-e $filePath)) {
       die "FileNotFound: No such file or directory \"".$filePath."\" \@voiceVerification";
     }
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/verification/voice'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           recording => [$filePath],
           userId => $usrId,
@@ -386,7 +386,7 @@ sub createGroup(){
   sub voiceVerificationByUrl(){
     shift;
     my ($usrId, $lang,  $phrase,$fileUrl) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/verification/voice/byUrl'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           fileUrl => $fileUrl,
           userId => $usrId,
@@ -403,7 +403,7 @@ sub createGroup(){
   sub faceVerification(){
     shift;
     my ($usrId, $filePath) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     if (!(-e $filePath)) {
       die "FileNotFound: No such file or directory \"".$filePath."\" \@faceVerification";
     }
@@ -421,7 +421,7 @@ sub createGroup(){
   sub faceVerificationByUrl(){
     shift;
     my ($usrId, $fileUrl) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/verification/face/byUrl'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           fileUrl => $fileUrl,
           userId => $usrId
@@ -439,7 +439,7 @@ sub createGroup(){
     if (!(-e $filePath)) {
       die "FileNotFound: No such file or directory \"".$filePath."\" \@videoVerification";
     }
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/verification/video'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           video => [$filePath],
           userId => $usrId,
@@ -457,7 +457,7 @@ sub createGroup(){
   sub videoVerificationByUrl(){
     shift;
     my ($usrId, $lang, $phrase, $fileUrl) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/verification/video/byUrl'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           fileUrl => $fileUrl,
           userId => $usrId,
@@ -477,7 +477,7 @@ sub createGroup(){
     if (!(-e $filePath)) {
       die "FileNotFound: No such file or directory \"".$filePath."\" \@voiceIdentification";
     }
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/identification/voice'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           recording => [$filePath],
           groupId => $grpId,
@@ -494,7 +494,7 @@ sub createGroup(){
   sub voiceIdentificationByUrl(){
     shift;
     my ($grpId, $lang, $phrase, $fileUrl) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/identification/voice/byUrl'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           fileUrl => $fileUrl,
           groupId => $grpId,
@@ -514,7 +514,7 @@ sub createGroup(){
     if (!(-e $filePath)) {
       die "FileNotFound: No such file or directory \"".$filePath."\" \@faceIdentification";
     }
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/identification/face'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           video => [$filePath],
           groupId => $grpId
@@ -529,7 +529,7 @@ sub createGroup(){
   sub faceIdentificationByUrl(){
     shift;
     my ($grpId, $fileUrl) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/identification/face/byUrl'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           fileUrl => $fileUrl,
           groupId => $grpId
@@ -547,7 +547,7 @@ sub createGroup(){
     if (!(-e $filePath)) {
       die "FileNotFound: No such file or directory \"".$filePath."\" \@videoIdentification";
     }
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/identification/video'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           video => [$filePath],
           groupId => $grpId,
@@ -565,7 +565,7 @@ sub createGroup(){
   sub videoIdentificationByUrl(){
     shift;
     my ($grpId, $lang,  $phrase,$fileUrl) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/identification/video/byUrl'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           fileUrl => $fileUrl,
           groupId => $grpId,
@@ -582,7 +582,7 @@ sub createGroup(){
   sub createUserToken() {
     shift;
     my ($userId, $secondsToTimeout) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/users/'.uri_escape($userId).'/token?timeOut='.$secondsToTimeout;
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -594,7 +594,7 @@ sub createGroup(){
   sub expireUserTokens() {
     shift;
     my ($userId) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/users/'.uri_escape($userId).'/expireTokens';
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -606,7 +606,7 @@ sub createGroup(){
   sub createManagedSubAccount(){
     shift;
     my ($firstName, $lastName, $email, $password, $lang) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/subaccount/managed'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           firstName => $firstName,
           lastName => $lastName,
@@ -624,7 +624,7 @@ sub createGroup(){
   sub createUnmanagedSubAccount(){
     shift;
     my ($firstName, $lastName, $email, $password, $lang) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/subaccount/unmanaged'.$self->{notificationUrl}, Content_Type => 'form-data', Content => [
           firstName => $firstName,
           lastName => $lastName,
@@ -643,7 +643,7 @@ sub createGroup(){
   sub regenerateSubAccountAPIToken() {
     shift;
     my ($APIKey) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = POST $baseUrl.'/subaccount/'.uri_escape($APIKey).$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
@@ -655,7 +655,7 @@ sub createGroup(){
   sub deleteSubAccount(){
     shift;
     my ($APIKey) = @_;
-    my $ua = LWP::UserAgent->new();
+    my $ua = LWP::UserAgent->new(timeout => 30);
     my $request = DELETE $baseUrl.'/subaccount/'.uri_escape($APIKey).$self->{notificationUrl};
     $request->header('platformId' => $platformId);
     $request->header('platformVersion' => $platformVersion);
